@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contacto · Q-LAB</title>
+<meta name="description" content="Escríbenos tus dudas sobre computación cuántica. Formulario validado con TypeScript.">
+<link rel="icon" type="image/svg+xml" href="../img/favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <nav class="nav" aria-label="Navegación principal">
+    <a class="brand" href="index.html">
+      <img src="../img/logo.svg" alt="Logotipo Q-LAB: esfera de Bloch estilizada">
+      <span class="brand-name">Q-<span>LAB</span></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="acerca.html">Acerca de</a></li>
+      <li><a href="contacto.html" aria-current="page">Contacto</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <section class="hero container" style="grid-template-columns:1fr;">
+    <div>
+      <h1>Hablemos de computación cuántica</h1>
+      <p class="lede">¿Tienes dudas sobre el contenido del sitio, quieres sugerir un tema o dejar comentarios sobre el proyecto? Completa el formulario y te responderemos.</p>
+    </div>
+  </section>
+
+  <div class="container"><div class="circuit-divider"><span class="gate"></span></div></div>
+
+  <section class="container contact-grid">
+
+    <div class="form-card">
+      <h2 style="margin-bottom:.3rem;">Formulario de contacto</h2>
+      <p class="text-muted" style="font-size:.9rem; margin-bottom:1.4rem;">Los campos marcados con <span style="color:var(--violet);">*</span> son obligatorios y se validan antes de guardar tu mensaje.</p>
+
+      <form id="contact-form" novalidate>
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="nombre">Nombre completo <span class="req">*</span></label>
+            <input type="text" id="nombre" name="nombre" placeholder="Ej. Ana Torres" required minlength="3" maxlength="60" pattern="[A-Za-zÁÉÍÓÚáéíóúÑñ\s]+">
+            <span class="error-msg" data-error-for="nombre"></span>
+          </div>
+
+          <div class="field">
+            <label for="correo">Correo electrónico <span class="req">*</span></label>
+            <input type="email" id="correo" name="correo" placeholder="tucorreo@utp.ac.pa" required>
+            <span class="error-msg" data-error-for="correo"></span>
+          </div>
+
+          <div class="field">
+            <label for="telefono">Teléfono <span class="req">*</span></label>
+            <input type="tel" id="telefono" name="telefono" placeholder="6000-0000" required pattern="[0-9]{4}-?[0-9]{4}" maxlength="9">
+            <span class="error-msg" data-error-for="telefono"></span>
+          </div>
+
+          <div class="field">
+            <label for="asunto">Asunto</label>
+            <select id="asunto" name="asunto">
+              <option value="duda-general">Duda general sobre el tema</option>
+              <option value="sugerencia">Sugerencia de contenido</option>
+              <option value="proyecto">Comentario sobre el proyecto</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+
+          <div class="field full">
+            <label for="fecha">Fecha en la que prefieres respuesta</label>
+            <input type="date" id="fecha" name="fecha">
+          </div>
+
+          <div class="field full">
+            <label for="mensaje">Mensaje <span class="req">*</span></label>
+            <textarea id="mensaje" name="mensaje" placeholder="Escribe tu consulta o comentario (mínimo 10 caracteres)..." required minlength="10" maxlength="600"></textarea>
+            <span class="error-msg" data-error-for="mensaje"></span>
+          </div>
+
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn btn-primary">Enviar mensaje</button>
+          <button type="reset" class="btn btn-outline">Limpiar</button>
+          <span id="form-status" class="form-status" role="status" aria-live="polite"></span>
+        </div>
+
+        <p class="text-muted" style="font-size:.78rem; margin-top:1.1rem;">
+          Al enviar, tus datos se validan en el navegador y se guardan en un archivo de datos local (<code>data/envios.json</code>), descargado automáticamente y almacenado también en este navegador. Este sitio no usa servidor ni base de datos (HTML5 + CSS3 + TypeScript, sin PHP).
+        </p>
+      </form>
+    </div>
+
+    <div>
+      <aside aria-label="Información de contacto">
+        <h3>Información de contacto</h3>
+        <ul>
+          <li><strong>Institución:</strong> Universidad Tecnológica de Panamá — FISC</li>
+          <li><strong>Curso:</strong> Ingeniería Web, grupo 1SF134</li>
+          <li><strong>Correo del proyecto:</strong> qlab.proyecto@utp.ac.pa</li>
+          <li><strong>Horario de respuesta:</strong> lunes a viernes, 8:00 a.m. – 5:00 p.m.</li>
+        </ul>
+        <div class="map-frame">
+          <iframe title="Mapa de ubicación de la Universidad Tecnológica de Panamá" src="https://www.openstreetmap.org/export/embed.html?bbox=-79.5350%2C8.9860%2C-79.5190%2C8.9980&layer=mapnik" loading="lazy"></iframe>
+        </div>
+      </aside>
+
+      <aside aria-label="Redes sociales">
+        <h3>Síguenos</h3>
+        <p style="font-size:.9rem; color:var(--text-muted);">Cuentas de ejemplo del proyecto — reemplazar por las reales antes de publicar.</p>
+        <div class="social-row">
+          <a href="#" aria-label="Instagram" title="Instagram (enlace de ejemplo)"><svg viewBox="0 0 24 24"><path d="M12 2.2c3.2 0 3.58.01 4.85.07 1.17.05 1.97.24 2.43.4a4.9 4.9 0 0 1 1.77 1.15 4.9 4.9 0 0 1 1.15 1.77c.16.46.35 1.26.4 2.43.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.24 1.97-.4 2.43a4.9 4.9 0 0 1-1.15 1.77 4.9 4.9 0 0 1-1.77 1.15c-.46.16-1.26.35-2.43.4-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.97-.24-2.43-.4a4.9 4.9 0 0 1-1.77-1.15 4.9 4.9 0 0 1-1.15-1.77c-.16-.46-.35-1.26-.4-2.43C2.21 15.58 2.2 15.2 2.2 12s.01-3.58.07-4.85c.05-1.17.24-1.97.4-2.43A4.9 4.9 0 0 1 3.82 3a4.9 4.9 0 0 1 1.77-1.15c.46-.16 1.26-.35 2.43-.4C9.29 1.4 9.67 1.4 12 1.4Zm0 3a5.4 5.4 0 1 0 0 10.8 5.4 5.4 0 0 0 0-10.8Zm0 8.9a3.5 3.5 0 1 1 0-7 3.5 3.5 0 0 1 0 7Zm5.6-9.1a1.26 1.26 0 1 1-2.52 0 1.26 1.26 0 0 1 2.52 0Z"/></svg></a>
+          <a href="#" aria-label="X (Twitter)" title="X (enlace de ejemplo)"><svg viewBox="0 0 24 24"><path d="M18.9 2H22l-7.6 8.7L23 22h-6.8l-5.3-6.9L4.8 22H1.7l8.1-9.3L1 2h7l4.8 6.3L18.9 2Zm-1.2 18h1.7L7.4 3.9H5.6L17.7 20Z"/></svg></a>
+          <a href="#" aria-label="LinkedIn" title="LinkedIn (enlace de ejemplo)"><svg viewBox="0 0 24 24"><path d="M6.94 5a2 2 0 1 1-4-.02 2 2 0 0 1 4 .02ZM3.2 8.75h3.47V21H3.2V8.75Zm6.2 0h3.33v1.68h.05c.46-.87 1.6-1.8 3.3-1.8 3.53 0 4.18 2.32 4.18 5.35V21h-3.47v-5.42c0-1.29-.02-2.96-1.8-2.96-1.8 0-2.08 1.41-2.08 2.87V21H9.4V8.75Z"/></svg></a>
+        </div>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:.6rem;">
+          <img src="../img/logo.svg" alt="" width="28" height="28">
+          <span class="brand-name">Q-<span>LAB</span></span>
+        </div>
+        <p class="text-muted" style="font-size:.88rem;">Proyecto académico sobre computación cuántica — Ingeniería Web, Facultad de Ingeniería de Sistemas Computacionales, Universidad Tecnológica de Panamá.</p>
+      </div>
+      <div>
+        <h4>Navegación</h4>
+        <ul>
+          <li><a href="index.html">Inicio</a></li>
+          <li><a href="acerca.html">Acerca de</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Recursos</h4>
+        <ul>
+          <li><a href="https://www.ibm.com/quantum" target="_blank" rel="noopener noreferrer">IBM Quantum ↗</a></li>
+          <li><a href="https://quantumai.google/" target="_blank" rel="noopener noreferrer">Google Quantum AI ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Q-LAB · Proyecto de Ingeniería Web, grupo 1SF134</span>
+      <span>Diseñado con técnica de wireframe · Universidad Tecnológica de Panamá</span>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/script.js" defer></script>
+</body>
+</html>
