@@ -151,15 +151,17 @@
     <div class="media-grid">
       <div class="media-box">
         <h3>Video: nuestro resumen del tema</h3>
-        <p class="hint">Video propio del equipo — reemplazar <code>media/video-explicativo.mp4</code> por el archivo final antes de publicar.</p>
-        <video controls poster="../img/portada-video.svg">
-          <source src="../media/video-explicativo.mp4" type="video/mp4">
-          Tu navegador no soporta la reproducción de video.
-        </video>
+        <div class="video-frame">
+          <iframe
+            src="https://www.youtube.com/embed/ilPfvMEOmCs"
+            title="Video sobre computación cuántica"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen>
+          </iframe>
+        </div>
       </div>
       <div class="media-box">
         <h3>Audio: mini-cápsula sobre qubits</h3>
-        <p class="hint">Audio propio del equipo — reemplazar <code>media/capsula-audio.mp3</code> por el archivo final antes de publicar.</p>
         <audio controls>
           <source src="../media/capsula-audio.mp3" type="audio/mpeg">
           Tu navegador no soporta la reproducción de audio.

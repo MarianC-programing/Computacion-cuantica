@@ -1,7 +1,0 @@
-Coloca aquí los archivos multimedia propios del equipo antes de subir el proyecto:
-
-- video-explicativo.mp4
-- capsula-audio.mp3
-- capsula-acerca.mp3
-
-Estos nombres ya están referenciados en html/index.html y html/acerca.html.
