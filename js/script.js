@@ -1,13 +1,9 @@
 "use strict";
 /**
  * Q-LAB — Validación y persistencia del formulario de contacto.
- * HTML5 + CSS3 + TypeScript, sin frameworks ni backend (sin PHP).
  *
  * Los envíos válidos se guardan como un "archivo de datos":
  *  1) En localStorage, bajo la clave "qlab_envios", como historial local.
- *  2) Como descarga automática de un archivo JSON (data/envios.json),
- *     que simula la persistencia en un archivo de datos sin necesidad
- *     de un servidor.
  */
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("contact-form");

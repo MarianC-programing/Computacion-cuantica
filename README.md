@@ -7,24 +7,12 @@ Se usó un **wireframe de baja fidelidad** para planificar la estructura antes d
 código. El wireframe (incluido también dentro de `html/acerca.html`, sección "Técnica de
 diseño utilizada") define tres bloques repetidos en las tres páginas:
 
-```
-+-------------------------------+
-|  LOGO      NAV NAV NAV        |   <- encabezado fijo (sticky)
-+-------------------------------+
-|   HERO (texto)  |  gráfico    |   <- mensaje principal + esfera de Bloch animada
-+-------------------------------+
-| article          |  aside     |   <- contenido en dos columnas
-| article          |  aside     |
-+-------------------------------+
-|        FOOTER (3 col.)        |   <- navegación, recursos, redes sociales
-+-------------------------------+
-```
 
 A partir de ese wireframe se definió el sistema visual (ver tokens en `css/styles.css`):
 
-- **Color:** fondo casi negro azulado (`#0a0e18`), superficies `#121a2e`/`#182238`,
-  acento cian tipo láser (`#5eead4`), acento violeta de superposición (`#c084fc`) y un
-  dorado (`#d4af7a`) que evoca el cableado coaxial chapado en oro de los procesadores
+- **Color:** fondo casi negro azulado, superficies `#121a2e`/`#182238`,
+  acento cian tipo láser, acento violeta de superposición y un
+  dorado que evoca el cableado coaxial chapado en oro de los procesadores
   cuánticos reales.
 - **Tipografía:** `Space Grotesk` para títulos (geométrica, técnica) y `IBM Plex Sans`
   para texto (guiño tipográfico a IBM, uno de los referentes del sector).
@@ -57,10 +45,9 @@ Apellido1-Apellido2/
 ```
 
 ## Stack
-HTML5 semántico + CSS3 (Grid/Flexbox, sin frameworks) + TypeScript. **Sin PHP y sin
-backend**, tal como se solicitó.
+HTML5 semántico + CSS3 (Grid/Flexbox, sin frameworks) + TypeScript. 
 
-## Cómo se guardan los datos del formulario (sin PHP)
+## Cómo se guardan los datos del formulario
 `contacto.html` valida en el cliente al menos 4 campos obligatorios (nombre, correo,
 teléfono y mensaje) con reglas propias en `ts/script.ts` (compilado a `js/script.js`).
 Al enviar un formulario válido:
@@ -71,17 +58,4 @@ Al enviar un formulario válido:
    el historial acumulado, que reemplaza el rol que tendría un archivo `.php`/base de
    datos en el servidor.
 
-Para recompilar el TypeScript tras editarlo (requiere Node.js):
 
-```bash
-npm install -g typescript
-tsc ts/script.ts --target ES2017 --outDir js
-```
-
-## Cómo previsualizar el sitio
-Abre `html/index.html` directamente en el navegador, o sirve la carpeta con cualquier
-servidor estático, por ejemplo:
-
-```bash
-npx serve .
-```
