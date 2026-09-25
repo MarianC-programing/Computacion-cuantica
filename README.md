@@ -5,7 +5,7 @@ Facultad de Ingeniería de Sistemas Computacionales — Universidad Tecnológica
 ## Técnica de diseño utilizada
 Se usó un **wireframe de baja fidelidad** para planificar la estructura antes de escribir
 código. El wireframe (incluido también dentro de `html/acerca.html`, sección "Técnica de
-diseño utilizada") define tres bloques repetidos en las tres páginas:
+diseño utilizada") define tres bloques repetidos en las páginas del sitio:
 
 
 A partir de ese wireframe se definió el sistema visual (ver tokens en `css/styles.css`):
@@ -27,6 +27,8 @@ Apellido1-Apellido2/
 ├── README.md
 ├── html/
 │   ├── index.html      (inicio)
+│   ├── computadora-cuantica.html (panorama general y aplicaciones)
+│   ├── componentes.html (anatomía interactiva del criostato)
 │   ├── acerca.html      (acerca de)
 │   └── contacto.html    (contacto con formulario)
 ├── css/
@@ -38,14 +40,19 @@ Apellido1-Apellido2/
 ├── img/
 │   ├── logo.svg
 │   ├── favicon.svg
-│   └── portada-video.svg
+│   └── Quantum_Computer_Science.jpg
 ├── media/                (agregar video-explicativo.mp4, capsula-audio.mp3, capsula-acerca.mp3)
 └── data/
     └── envios.json       (se actualiza en el navegador; ver abajo)
 ```
 
+## Páginas destacadas
+
+- **Computadora cuántica:** explica qué es un procesador cuántico, qué problemas podría ayudar a estudiar y por qué no sustituye a un computador clásico. Desde esta página se accede al recorrido de la arquitectura física.
+- **Componentes:** presenta un SVG propio de un criostato de dilución. Al desplazarse, cada una de sus seis capas se resalta junto con la explicación correspondiente.
+
 ## Stack
-HTML5 semántico + CSS3 (Grid/Flexbox, sin frameworks) + TypeScript. 
+HTML5 semántico + CSS3 (Grid/Flexbox, sin frameworks). El proyecto conserva los archivos JavaScript existentes para la validación del formulario y la interacción del diagrama de componentes.
 
 ## Cómo se guardan los datos del formulario
 `contacto.html` valida en el cliente al menos 4 campos obligatorios (nombre, correo,
@@ -57,5 +64,4 @@ Al enviar un formulario válido:
 2. Automáticamente se descarga un **archivo de datos JSON** (`envios.json`) con todo
    el historial acumulado, que reemplaza el rol que tendría un archivo `.php`/base de
    datos en el servidor.
-
 

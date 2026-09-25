@@ -212,6 +212,22 @@ p{ margin: 0 0 1em; color: var(--text); max-width: 68ch; }
   .bloch .orbit{ animation: none; }
 }
 
+/* ---------- imagen de computadora cuántica ---------- */
+.quantum-computer-visual{
+  width: 450px;
+  height: 450px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.quantum-computer-visual img{
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 28px rgba(0,0,0,.35));
+}
+
 /* ---------- layout principal con article + aside ---------- */
 .content-grid{
   display: grid;
@@ -408,10 +424,216 @@ video, audio{ width: 100%; border-radius: var(--radius); background: #000; }
   font-size: .8rem; color: var(--text-muted);
 }
 
-/* ---------- responsive ---------- */
+/* =========================================================
+   Página "Componentes" — diagrama SVG propio, fijo en el
+   centro de la pantalla, que va resaltando cada capa según
+   la tarjeta visible. Reemplaza la foto de fondo por un
+   dibujo vectorial en la misma paleta del sitio (nítido a
+   cualquier resolución, con vida propia vía animación).
+   Prefijo qc- para no chocar con el resto del sitio.
+   ========================================================= */
+
+.qc-diagram-wrap{
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+.qc-diagram-wrap ~ .site-header,
+.qc-diagram-wrap ~ main,
+.qc-diagram-wrap ~ .site-footer{ position: relative; z-index: 1; }
+.qc-diagram-wrap::before{
+  content: "";
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 900px 700px at 50% 42%, rgba(94,234,212,.07), transparent 60%),
+    radial-gradient(ellipse 700px 600px at 68% 68%, rgba(192,132,252,.06), transparent 60%),
+    var(--bg);
+}
+
+#qc-diagram{
+  position: relative;
+  width: min(58vw, 460px);
+  height: auto;
+  max-height: 88vh;
+  transform: translateY(4vh);
+  filter: drop-shadow(0 30px 60px rgba(0,0,0,.5));
+}
+
+.qc-layer{ transition: opacity .7s ease; opacity: .28; }
+.qc-layer.is-active{ opacity: 1; }
+
+.qc-ring{ fill: none; stroke: var(--text-muted); stroke-width: 1.4; }
+#layer-shield.is-active .qc-ring{ stroke: var(--cyan); }
+.qc-bolt{ fill: var(--text-muted); }
+#layer-shield.is-active .qc-bolt{ fill: var(--cyan); }
+
+.qc-wire{ stroke: var(--border); stroke-width: 1; }
+#layer-wiring.is-active .qc-wire{ stroke: var(--violet); }
+.qc-tick{ stroke: var(--border); stroke-width: 2; }
+#layer-wiring.is-active .qc-tick{ stroke: var(--violet); }
+
+.qc-plate{ fill: var(--surface-2); stroke: var(--border); stroke-width: 1.2; }
+#layer-stages.is-active .qc-plate{ stroke: var(--gold); fill: rgba(212,175,122,.10); }
+
+.qc-mixing{ fill: rgba(94,234,212,.05); stroke: var(--border); stroke-width: 1.4; }
+#layer-mixing.is-active .qc-mixing{ stroke: var(--cyan); fill: rgba(94,234,212,.16); }
+
+.qc-chip{ fill: var(--bg-alt); stroke: var(--border); stroke-width: 1.2; }
+#layer-chip.is-active .qc-chip{ stroke: var(--violet); fill: rgba(192,132,252,.18); }
+.qc-chip-grid{ stroke: var(--border); stroke-width: .6; }
+#layer-chip.is-active .qc-chip-grid{ stroke: var(--violet); opacity: .7; }
+
+.qc-amp{ fill: var(--bg-alt); stroke: var(--border); stroke-width: 1.2; }
+#layer-amps.is-active .qc-amp{ stroke: var(--gold); fill: rgba(212,175,122,.16); }
+.qc-signal{ fill: none; stroke: var(--border); stroke-width: 1; }
+#layer-amps.is-active .qc-signal{ stroke: var(--gold); }
+
+.qc-core{
+  fill: var(--gold);
+  animation: qc-pulse 3.2s ease-in-out infinite;
+  transform-origin: 240px 700px;
+}
+@keyframes qc-pulse{
+  0%, 100%{ opacity: .55; }
+  50%{ opacity: 1; }
+}
+@media (prefers-reduced-motion: reduce){
+  .qc-core{ animation: none; opacity: .85; }
+}
+
+@media (max-width: 860px){
+  #qc-diagram{ width: min(74vw, 360px); opacity: .8; }
+}
+
+.qc-hero{
+  min-height: 62vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 6rem 0 3rem;
+}
+.qc-eyebrow{
+  display: inline-block;
+  font-family: var(--font-head);
+  font-size: .78rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .9rem;
+}
+.qc-hero h1{ max-width: 16ch; }
+.qc-hero .lede{ font-size: 1.08rem; color: var(--text-muted); max-width: 56ch; }
+.qc-hero .scroll-hint{
+  margin-top: 2.4rem;
+  font-size: .82rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+.qc-hero .scroll-hint::before{
+  content: "";
+  width: 1px; height: 26px;
+  background: linear-gradient(var(--cyan), transparent);
+}
+
+.qc-story{
+  padding: 2vh 0 8vh;
+  display: flex;
+  flex-direction: column;
+  gap: 18vh;
+}
+@media (max-width: 860px){
+  .qc-story{ gap: 7vh; padding-top: 1vh; }
+}
+
+.qc-card{
+  background: rgba(18,26,46,.62);
+  border: 1px solid rgba(94,234,212,.2);
+  border-radius: var(--radius);
+  padding: 2rem 2.2rem;
+  max-width: 560px;
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  box-shadow: 0 24px 60px rgba(0,0,0,.4);
+  transition: border-color .5s ease;
+}
+.qc-card.qc-right{ margin-left: auto; }
+.qc-card.qc-left{ margin-right: auto; }
+.qc-card .qc-step{
+  display: block;
+  font-family: var(--font-head);
+  font-size: .78rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: .6rem;
+}
+.qc-card h2{ font-size: clamp(1.3rem, 2.4vw, 1.7rem); margin-bottom: .7rem; }
+.qc-card p{ color: var(--text-muted); font-size: .96rem; margin-bottom: .8rem; }
+.qc-card p:last-child{ margin-bottom: 0; }
+.qc-card.violet{ border-left: 3px solid var(--violet); }
+.qc-card.cyan{ border-left: 3px solid var(--cyan); }
+.qc-card.gold{ border-left: 3px solid var(--gold); }
+.qc-card.is-current{ border-color: rgba(94,234,212,.5); }
+
+.qc-rail{
+  position: fixed;
+  right: 2.2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .9rem;
+}
+.qc-rail .qc-dot{
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--border);
+  transition: background .4s ease, transform .4s ease;
+}
+.qc-rail .qc-dot.is-active{
+  background: var(--gold);
+  transform: scale(1.35);
+}
+@media (max-width: 1180px){
+  .qc-rail{ display: none; }
+}
+
+.qc-cta{
+  padding: 4vh 0 2vh;
+  text-align: center;
+}
+.qc-cta-card{
+  background: rgba(18,26,46,.72);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 2.4rem 2rem;
+  max-width: 640px;
+  margin: 0 auto;
+}
+.qc-cta-card h2{ margin-bottom: .6rem; }
+.qc-cta-card p{ color: var(--text-muted); margin: 0 auto 1.4rem; }
+.qc-cta-card .hero-cta{ justify-content: center; margin-top: 0; }
+
+@media (max-width: 860px){
+  .qc-card{ max-width: 100%; }
+  .qc-card.qc-right, .qc-card.qc-left{ margin-left: auto; margin-right: auto; }
+  .qc-hero{ min-height: 50vh; }
+}
+
+/* ---------- responsive general del sitio ---------- */
 @media (max-width: 860px){
   .hero{ grid-template-columns: 1fr; }
   .bloch{ order: -1; margin-bottom: 1rem; width: 200px; height: 200px; }
+  .quantum-computer-visual{ order: -1; margin-bottom: 1rem; width: 280px; height: 280px; }
   .content-grid{ grid-template-columns: 1fr; }
   .contact-grid{ grid-template-columns: 1fr; }
   .media-grid{ grid-template-columns: 1fr; }
@@ -420,5 +642,16 @@ video, audio{ width: 100%; border-radius: var(--radius); background: #000; }
   .nav-links{ gap: 1.1rem; }
 }
 @media (max-width: 560px){
-  .nav-links{ display: none; }
+  .nav{
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .55rem;
+  }
+  .nav-links{
+    display: flex;
+    width: 100%;
+    gap: .65rem;
+    flex-wrap: wrap;
+  }
+  .nav-links a{ font-size: .78rem; }
 }
